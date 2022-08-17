@@ -13,6 +13,7 @@
         table{
             width: 500px;
             border-collapse: collapse;
+            position: relative;
         }
 
         td, th{
@@ -20,27 +21,49 @@
             padding: 10px;
         }
 
-        /* td:nth-child(2) {
+        td:nth-child(2) {
             text-align: right;
         }
+        
+        /*
+        nth-child(2) = passa que a segunda coluna ficara alinhada a esquerda.
         */
-        td.num{
-            text-align: right;
+
+        caption{
+            font-size: 1.5em;
+            font-weight: bold;
+            padding: 10px;
+            background-color: lightgray;
         }
 
         thead, tfoot{
-            background-color: gray;
+            background-color: rgb(70, 70, 70);
             color: white;
         }
+
+        thead > tr > th{
+            position: sticky;
+            top: -1px;
+            background-color: rgb(70, 70, 70);
+        }
+
+        tbody > tr:nth-child(2n){
+            background-color: lightgray;
+        }
+
+         /*
+        nth-child(2n) = passa que a cada duas linhas, a segunda sera pintada. pode utilizar 'odd' para pintar somente as linhas ímpares, ou even para as linhas pares.
+        */
     </style>
 </head>
 <body>
     <h1>Uso de tabelas grandes</h1>
     <table>
+        <caption>População das Unidades Federativas</caption>
         <thead>
             <tr>
-                <th>Estado</th>
-                <th>População</th>
+                <th scope="col">Estado</th>
+                <th scope="col" style = "width: 100px;">População</th>
             </tr>
         </thead>
         <tbody>
@@ -155,7 +178,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <th>Total de Habitantes</th>
+                <th scope="row">Total de Habitantes</th>
                 <td class="num"><strong>213.317.639</strong></td>
             </tr>
         </tfoot>
